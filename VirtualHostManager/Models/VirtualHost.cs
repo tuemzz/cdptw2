@@ -6,13 +6,20 @@ using System.Threading.Tasks;
 
 namespace VirtualHostManager.Models
 {
-    class VirtualHost
+    public class VirtualHost
     {
-        public string ServerName { set; get; }
-        public string Port { set; get; }
+        public string Url { set; get; }
         public string Directory { set; get; }
-        public string DirectoryConfig { set; get; }
+        public string Date { set; get; }
+        public string Description { set; get; }
         public bool Status { set; get; }
+        public string Context { set; get; }
 
+    }
+    public enum VirtualHostDetailType
+    {
+        Create,
+        View,
+        Edit,
     }
 }
