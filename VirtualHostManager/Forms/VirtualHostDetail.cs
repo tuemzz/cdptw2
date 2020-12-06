@@ -87,5 +87,67 @@ namespace VirtualHostManager.Forms
             saveCallback?.Invoke();
             this.Close();
         }
+        public VirtualHostDetailType formType { set; get; }
+        public string Url
+        {
+            get { return urlText.Text; }
+            set { urlText.Text = value; }
+        }
+        public string Directory
+        {
+            get { return directoryText.Text; }
+            set { directoryText.Text = value; }
+        }
+        public string Date
+        {
+            get { return dateCreated.Value.ToString(); }
+            set { dateCreated.Value = string.IsNullOrEmpty(value) ? DateTime.Now : DateTime.Parse(value); }
+        }
+        public string Description
+        {
+            get { return noteText.Text; }
+            set { noteText.Text = value; }
+        }
+        public bool Status
+        {
+            get { return statusCheckBox.Checked; }
+            set { statusCheckBox.Checked = value; }
+        }
+        public string Context
+        {
+            get { return ContextText.Text; }
+            set { ContextText.Text = value; }
+        }
+
+        public Action saveCallback { set; get; }
+
+        private void VirtualHostDetail_Load(object sender, EventArgs e)
+        {
+            if(formType == VirtualHostDetailType.View)
+            {
+                ContextText.Enabled = false;
+                statusCheckBox.Enabled = false;
+                directoryText.Enabled = false;
+                noteText.Enabled = false;
+                urlText.Enabled = false;
+                dateCreated.Enabled = false;
+            }
+        }
+
+        private void statusCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            saveCallback?.Invoke();
+            this.Close();
+        }
     }
 }
