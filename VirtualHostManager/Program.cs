@@ -17,7 +17,7 @@ namespace VirtualHostManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VirtualHostList());
+            Application.Run(new HostForm());
         }
     }
 }

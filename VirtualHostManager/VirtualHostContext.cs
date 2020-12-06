@@ -12,45 +12,12 @@ namespace VirtualHostManager
     class VirtualHostContext
     {
         //private string filePath = @"C:\wamp64\bin\apache\apache2.4.39\conf\extra\httpd-vhosts.conf";
-       // private string filePath = @"K:\wamp64\bin\apache\apache2.4.35\conf\httpd.conf";
-       private string filePath = @"C:\xampp\apache\conf\extra\httpd-vhosts.conf";
+        // private string filePath = @"K:\wamp64\bin\apache\apache2.4.35\conf\httpd.conf";
+        private string _filePath;
         public List<VirtualHost> data { get; set; }
-        public VirtualHostContext()
+        public VirtualHostContext(string filePath)
         {
-            try {
-                string[] stringSeparators = new string[] { "\r\n" };
-                Regex regex = new Regex(@"(# Virtural Host Manager(.*?)###)?((\n|\r\n)#*\s*<\s*VirtualHost[^>]*>(.*?)<\s*\/\s*VirtualHost>)", RegexOptions.Singleline);
-                var rawData = regex.Matches(File.ReadAllText(filePath))
-                                    .Cast<Match>()
-                                    .Select(m => m.Value)
-                                    .ToList();
-                data = rawData.Select(x =>
-                                            {
-                                                var context = Regex.Match(x, @"\n{1}#*[^\S\r\n]*<\s*VirtualHost[^>]*>(.*?)<\s*\/\s*VirtualHost>", RegexOptions.Singleline).Value.Trim('\n');
-                                                var status = !context.StartsWith("#");
-                                                if (!status)
-                                                {
-                                                    var a = context.Split(new[] { System.Environment.NewLine }, StringSplitOptions.None).Select(xx => xx.Trim('#'));
-                                                    context = string.Join("\r\n", context.Split(new[] { System.Environment.NewLine }, StringSplitOptions.None)
-                                                                     .Select(xx => xx.Replace("#", ""))
-                                                                     .ToList());
-                                                }
-                                                var userDeclareData = Regex.Match(x, @"# Virtural Host Manager(.*?)###", RegexOptions.Singleline).Value.Trim('\n');
-                                                return new VirtualHost()
-                                                {
-                                                    Url = Regex.Match(userDeclareData, @"Url:(.*?)\n").Value.Replace("Url:", "").Replace("\r\n", ""),
-                                                    Date = Regex.Match(userDeclareData, @"Date:(.*?)\n").Value.Replace("Date:", "").Replace("\r\n", ""),
-                                                    Description = Regex.Match(userDeclareData, @"Description:(.*?)\n").Value.Replace("Description:", "").Replace("\r\n", ""),
-                                                    Directory = Regex.Match(userDeclareData, @"Directory:(.*?)\n").Value.Replace("Directory:", "").Replace("\r\n", ""),
-                                                    Context = context,
-                                                    Status = status
-                                                };
-                                            }).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _filePath = filePath;
         }
         
         public void SaveChanges()
@@ -74,7 +41,46 @@ namespace VirtualHostManager
                 result += System.Environment.NewLine;
                 context.Append(result);
             });
-            File.WriteAllText(filePath, context.ToString());
+            File.WriteAllText(_filePath, context.ToString());
+        }
+
+        public void Read()
+        {
+            try
+            {
+                string[] stringSeparators = new string[] { "\r\n" };
+                Regex regex = new Regex(@"(# Virtural Host Manager(.*?)###)?((\n|\r\n)#*\s*<\s*VirtualHost[^>]*>(.*?)<\s*\/\s*VirtualHost>)", RegexOptions.Singleline);
+                var rawData = regex.Matches(File.ReadAllText(_filePath))
+                                    .Cast<Match>()
+                                    .Select(m => m.Value)
+                                    .ToList();
+                data = rawData.Select(x =>
+                {
+                    var context = Regex.Match(x, @"\n{1}#*[^\S\r\n]*<\s*VirtualHost[^>]*>(.*?)<\s*\/\s*VirtualHost>", RegexOptions.Singleline).Value.Trim('\n');
+                    var status = !context.StartsWith("#");
+                    if (!status)
+                    {
+                        var a = context.Split(new[] { System.Environment.NewLine }, StringSplitOptions.None).Select(xx => xx.Trim('#'));
+                        context = string.Join("\r\n", context.Split(new[] { System.Environment.NewLine }, StringSplitOptions.None)
+                                         .Select(xx => xx.Replace("#", ""))
+                                         .ToList());
+                    }
+                    var userDeclareData = Regex.Match(x, @"# Virtural Host Manager(.*?)###", RegexOptions.Singleline).Value.Trim('\n');
+                    return new VirtualHost()
+                    {
+                        Url = Regex.Match(userDeclareData, @"Url:(.*?)\n").Value.Replace("Url:", "").Replace("\r\n", ""),
+                        Date = Regex.Match(userDeclareData, @"Date:(.*?)\n").Value.Replace("Date:", "").Replace("\r\n", ""),
+                        Description = Regex.Match(userDeclareData, @"Description:(.*?)\n").Value.Replace("Description:", "").Replace("\r\n", ""),
+                        Directory = Regex.Match(userDeclareData, @"Directory:(.*?)\n").Value.Replace("Directory:", "").Replace("\r\n", ""),
+                        Context = context,
+                        Status = status
+                    };
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
