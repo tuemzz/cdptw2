@@ -117,4 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContextText.Text" xml:space="preserve">
+    <value>&lt;VirtualHost *:80&gt;
+ ServerName localhost
+ ServerAlias localhost
+ DocumentRoot "${INSTALL_DIR}/www"
+ &lt;Directory "${INSTALL_DIR}/www/"&gt;
+ Options +Indexes +Includes +FollowSymLinks +MultiViews
+ AllowOverride
+ All Require local
+ &lt;/Directory&gt;
+
+
+&lt;/VirtualHost&gt;</value>
+  </data>
 </root>
