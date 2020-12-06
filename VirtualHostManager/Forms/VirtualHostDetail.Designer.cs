@@ -154,7 +154,6 @@ namespace VirtualHostManager.Forms
             this.saveBtn.AutoSize = true;
             this.saveBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.saveBtn.Depth = 0;
-            this.saveBtn.Icon = null;
             this.saveBtn.Location = new System.Drawing.Point(375, 464);
             this.saveBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.saveBtn.Name = "saveBtn";
@@ -170,7 +169,6 @@ namespace VirtualHostManager.Forms
             this.cancelBtn.AutoSize = true;
             this.cancelBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cancelBtn.Depth = 0;
-            this.cancelBtn.Icon = null;
             this.cancelBtn.Location = new System.Drawing.Point(320, 464);
             this.cancelBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.cancelBtn.Name = "cancelBtn";
