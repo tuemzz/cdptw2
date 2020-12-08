@@ -42,6 +42,7 @@ namespace VirtualHostManager.Forms
                 DataPropertyName = "Edit",
         };
             dataGridView1.Columns.Add(editColumn);
+            dataGridView1.DataSource = list;
 
         }
 
@@ -58,6 +59,20 @@ namespace VirtualHostManager.Forms
         private void HostForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void savebtn_Click(object sender, EventArgs e)
+        {
+            var list = ((BindingList<Hosts>)dataGridView1.DataSource).ToList();
+            context.data = list.Select(x =>
+            {
+                if (x.LineNumber == 0)
+                {
+                    x.LineNumber = -1;
+                }
+                return x;
+            }).ToList();
+            context.SaveChanges();
         }
     }
 }

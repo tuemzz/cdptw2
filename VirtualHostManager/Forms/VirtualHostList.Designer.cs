@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VirtualHostList));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.label4 = new MaterialSkin.Controls.MaterialLabel();
-            this.label3 = new MaterialSkin.Controls.MaterialLabel();
-            this.label2 = new MaterialSkin.Controls.MaterialLabel();
-            this.label1 = new MaterialSkin.Controls.MaterialLabel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new MaterialSkin.Controls.MaterialLabel();
             this.textBox1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -41,105 +44,113 @@
             this.tạoMớiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đổiĐườngDẫnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialContextMenuStrip1 = new MaterialSkin.Controls.MaterialContextMenuStrip();
-            this.dsaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lkkjToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lkmmmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restartWampToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restartXamppToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.panel1.SuspendLayout();
+            this.toolStripPaging = new System.Windows.Forms.ToolStrip();
+            this.btnBackward = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.btnForward = new System.Windows.Forms.ToolStripButton();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.EditAction = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteAction = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.directoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updateAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.virtualHostBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            this.materialContextMenuStrip1.SuspendLayout();
+            this.toolStripPaging.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualHostBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 111);
+            this.flowLayoutPanel1.Controls.Add(this.dataGridView1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 48);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1160, 548);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1160, 658);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
-            // panel1
+            // dataGridView1
             // 
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Depth = 0;
-            this.panel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.panel1.Location = new System.Drawing.Point(12, 69);
-            this.panel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1160, 36);
-            this.panel1.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Depth = 0;
-            this.label4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(840, 13);
-            this.label4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 19);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Action";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Depth = 0;
-            this.label3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(394, 13);
-            this.label3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 19);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Directory";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Depth = 0;
-            this.label2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(68, 13);
-            this.label2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 19);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Url";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Depth = 0;
-            this.label1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(17, 13);
-            this.label1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "#";
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Emoji", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.urlDataGridViewTextBoxColumn,
+            this.directoryDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.statusDataGridViewCheckBoxColumn,
+            this.contextDataGridViewTextBoxColumn,
+            this.authorDataGridViewTextBoxColumn,
+            this.createAtDataGridViewTextBoxColumn,
+            this.updateAtDataGridViewTextBoxColumn,
+            this.EditAction,
+            this.DeleteAction});
+            this.dataGridView1.DataSource = this.virtualHostBindingSource3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1156, 697);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
+            this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.label5.Depth = 0;
-            this.label5.Font = new System.Drawing.Font("Roboto", 11F);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(809, 37);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label5.Location = new System.Drawing.Point(798, 24);
             this.label5.MouseState = MaterialSkin.MouseState.HOVER;
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 19);
+            this.label5.Size = new System.Drawing.Size(77, 18);
             this.label5.TabIndex = 5;
             this.label5.Text = "Tìm kiếm: ";
             // 
@@ -148,24 +159,33 @@
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.textBox1.Depth = 0;
             this.textBox1.Hint = "";
-            this.textBox1.Location = new System.Drawing.Point(897, 34);
+            this.textBox1.Location = new System.Drawing.Point(881, 19);
+            this.textBox1.MaxLength = 32767;
             this.textBox1.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '\0';
+            this.textBox1.SelectedText = "";
+            this.textBox1.SelectionLength = 0;
+            this.textBox1.SelectionStart = 0;
             this.textBox1.Size = new System.Drawing.Size(275, 23);
             this.textBox1.TabIndex = 6;
             this.textBox1.TabStop = false;
+            this.textBox1.UseSystemPasswordChar = false;
+            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.hostToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.Visible = false;
             // 
             // fileToolStripMenuItem
             // 
@@ -198,76 +218,48 @@
             this.thoátToolStripMenuItem.Text = "Thoát";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click_1);
             // 
-            // button1
+            // editToolStripMenuItem
             // 
-            this.button1.AutoSize = true;
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.Depth = 0;
-            this.button1.Location = new System.Drawing.Point(640, 27);
-            this.button1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.button1.Name = "button1";
-            this.button1.Primary = true;
-            this.button1.Size = new System.Drawing.Size(163, 36);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Khởi động lại wamp";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.restartWampToolStripMenuItem,
+            this.restartXamppToolStripMenuItem,
+            this.backupToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
-            // materialContextMenuStrip1
+            // restartWampToolStripMenuItem
             // 
-            this.materialContextMenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialContextMenuStrip1.Depth = 0;
-            this.materialContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dsaToolStripMenuItem,
-            this.lkkjToolStripMenuItem,
-            this.lkmmmToolStripMenuItem});
-            this.materialContextMenuStrip1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialContextMenuStrip1.Name = "materialContextMenuStrip1";
-            this.materialContextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.materialContextMenuStrip1.Size = new System.Drawing.Size(129, 70);
+            this.restartWampToolStripMenuItem.Name = "restartWampToolStripMenuItem";
+            this.restartWampToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.restartWampToolStripMenuItem.Text = "Restart wamp";
             // 
-            // dsaToolStripMenuItem
+            // restartXamppToolStripMenuItem
             // 
-            this.dsaToolStripMenuItem.Name = "dsaToolStripMenuItem";
-            this.dsaToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.dsaToolStripMenuItem.Text = "dsa";
+            this.restartXamppToolStripMenuItem.Name = "restartXamppToolStripMenuItem";
+            this.restartXamppToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.restartXamppToolStripMenuItem.Text = "Restart xampp";
             // 
-            // lkkjToolStripMenuItem
+            // backupToolStripMenuItem
             // 
-            this.lkkjToolStripMenuItem.Name = "lkkjToolStripMenuItem";
-            this.lkkjToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.lkkjToolStripMenuItem.Text = "lkkj";
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.backupToolStripMenuItem.Text = "Backup";
             // 
-            // lkmmmToolStripMenuItem
+            // hostToolStripMenuItem
             // 
-            this.lkmmmToolStripMenuItem.Name = "lkmmmToolStripMenuItem";
-            this.lkmmmToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.lkmmmToolStripMenuItem.Text = "lkm,.m,.m";
-            // 
-            // materialDivider1
-            // 
-            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(12, 105);
-            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(1157, 2);
-            this.materialDivider1.TabIndex = 0;
-            this.materialDivider1.Text = "materialDivider1";
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(16, 665);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1153, 76);
-            this.flowLayoutPanel2.TabIndex = 0;
+            this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
+            this.hostToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.hostToolStripMenuItem.Text = "Host";
+            this.hostToolStripMenuItem.Click += new System.EventHandler(this.hostToolStripMenuItem_Click);
             // 
             // materialFlatButton1
             // 
             this.materialFlatButton1.AutoSize = true;
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(556, 27);
+            this.materialFlatButton1.Icon = null;
+            this.materialFlatButton1.Location = new System.Drawing.Point(714, 6);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -278,30 +270,219 @@
             this.materialFlatButton1.UseVisualStyleBackColor = true;
             this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
             // 
+            // toolStripPaging
+            // 
+            this.toolStripPaging.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.toolStripPaging.BackColor = System.Drawing.Color.White;
+            this.toolStripPaging.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.toolStripPaging.CanOverflow = false;
+            this.toolStripPaging.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripPaging.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripPaging.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStripPaging.ImageScalingSize = new System.Drawing.Size(43, 32);
+            this.toolStripPaging.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnBackward,
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripButton4,
+            this.toolStripButton5,
+            this.btnForward});
+            this.toolStripPaging.Location = new System.Drawing.Point(408, 0);
+            this.toolStripPaging.Name = "toolStripPaging";
+            this.toolStripPaging.ShowItemToolTips = false;
+            this.toolStripPaging.Size = new System.Drawing.Size(340, 44);
+            this.toolStripPaging.TabIndex = 0;
+            this.toolStripPaging.Text = "toolStrip1";
+            // 
+            // btnBackward
+            // 
+            this.btnBackward.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnBackward.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackward.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBackward.Name = "btnBackward";
+            this.btnBackward.Size = new System.Drawing.Size(51, 41);
+            this.btnBackward.Text = "<<";
+            this.btnBackward.Click += new System.EventHandler(this.ToolStripButtonClick);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.BackColor = System.Drawing.Color.White;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Padding = new System.Windows.Forms.Padding(12);
+            this.toolStripButton1.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton1.Text = "1";
+            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButtonClick);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Padding = new System.Windows.Forms.Padding(12);
+            this.toolStripButton2.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton2.Text = "2";
+            this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButtonClick);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Padding = new System.Windows.Forms.Padding(12);
+            this.toolStripButton3.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton3.Text = "3";
+            this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButtonClick);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Padding = new System.Windows.Forms.Padding(12);
+            this.toolStripButton4.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton4.Text = "4";
+            this.toolStripButton4.Click += new System.EventHandler(this.ToolStripButtonClick);
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Padding = new System.Windows.Forms.Padding(12);
+            this.toolStripButton5.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton5.Text = "5";
+            this.toolStripButton5.Click += new System.EventHandler(this.ToolStripButtonClick);
+            // 
+            // btnForward
+            // 
+            this.btnForward.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnForward.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnForward.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnForward.Name = "btnForward";
+            this.btnForward.Size = new System.Drawing.Size(51, 41);
+            this.btnForward.Text = ">>";
+            this.btnForward.Click += new System.EventHandler(this.ToolStripButtonClick);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.toolStripPaging, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 716);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1156, 44);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // EditAction
+            // 
+            this.EditAction.HeaderText = "";
+            this.EditAction.Name = "EditAction";
+            this.EditAction.ReadOnly = true;
+            // 
+            // DeleteAction
+            // 
+            this.DeleteAction.HeaderText = "";
+            this.DeleteAction.Name = "DeleteAction";
+            this.DeleteAction.ReadOnly = true;
+            // 
+            // urlDataGridViewTextBoxColumn
+            // 
+            this.urlDataGridViewTextBoxColumn.DataPropertyName = "Url";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
+            this.urlDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.urlDataGridViewTextBoxColumn.HeaderText = "Url";
+            this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
+            this.urlDataGridViewTextBoxColumn.ReadOnly = true;
+            this.urlDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // directoryDataGridViewTextBoxColumn
+            // 
+            this.directoryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.directoryDataGridViewTextBoxColumn.DataPropertyName = "Directory";
+            this.directoryDataGridViewTextBoxColumn.HeaderText = "Directory";
+            this.directoryDataGridViewTextBoxColumn.Name = "directoryDataGridViewTextBoxColumn";
+            this.directoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewCheckBoxColumn
+            // 
+            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
+            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.statusDataGridViewCheckBoxColumn.Width = 50;
+            // 
+            // contextDataGridViewTextBoxColumn
+            // 
+            this.contextDataGridViewTextBoxColumn.DataPropertyName = "Context";
+            this.contextDataGridViewTextBoxColumn.HeaderText = "Context";
+            this.contextDataGridViewTextBoxColumn.Name = "contextDataGridViewTextBoxColumn";
+            this.contextDataGridViewTextBoxColumn.ReadOnly = true;
+            this.contextDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // authorDataGridViewTextBoxColumn
+            // 
+            this.authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
+            this.authorDataGridViewTextBoxColumn.HeaderText = "Author";
+            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
+            this.authorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // createAtDataGridViewTextBoxColumn
+            // 
+            this.createAtDataGridViewTextBoxColumn.DataPropertyName = "CreateAt";
+            this.createAtDataGridViewTextBoxColumn.HeaderText = "CreateAt";
+            this.createAtDataGridViewTextBoxColumn.Name = "createAtDataGridViewTextBoxColumn";
+            this.createAtDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // updateAtDataGridViewTextBoxColumn
+            // 
+            this.updateAtDataGridViewTextBoxColumn.DataPropertyName = "UpdateAt";
+            this.updateAtDataGridViewTextBoxColumn.HeaderText = "UpdateAt";
+            this.updateAtDataGridViewTextBoxColumn.Name = "updateAtDataGridViewTextBoxColumn";
+            this.updateAtDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // virtualHostBindingSource3
+            // 
+            this.virtualHostBindingSource3.DataSource = typeof(VirtualHostManager.Models.VirtualHost);
+            // 
             // VirtualHostList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.materialFlatButton1);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.materialDivider1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "VirtualHostList";
-            this.Sizable = false;
             this.Text = "Danh sách";
             this.Load += new System.EventHandler(this.VirtualHostList_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.materialContextMenuStrip1.ResumeLayout(false);
+            this.toolStripPaging.ResumeLayout(false);
+            this.toolStripPaging.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualHostBindingSource3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,11 +491,6 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private MaterialSkin.Controls.MaterialLabel panel1;
-        private MaterialSkin.Controls.MaterialLabel label4;
-        private MaterialSkin.Controls.MaterialLabel label3;
-        private MaterialSkin.Controls.MaterialLabel label2;
-        private MaterialSkin.Controls.MaterialLabel label1;
         private MaterialSkin.Controls.MaterialLabel label5;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -322,13 +498,33 @@
         private System.Windows.Forms.ToolStripMenuItem tạoMớiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem đổiĐườngDẫnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thoátToolStripMenuItem;
-        private MaterialSkin.Controls.MaterialRaisedButton button1;
-        private MaterialSkin.Controls.MaterialContextMenuStrip materialContextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem dsaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lkkjToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lkmmmToolStripMenuItem;
-        private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restartWampToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restartXamppToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hostToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource virtualHostBindingSource3;
+        private System.Windows.Forms.ToolStrip toolStripPaging;
+        private System.Windows.Forms.ToolStripButton btnBackward;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton btnForward;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn urlDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn directoryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contextDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createAtDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updateAtDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn EditAction;
+        private System.Windows.Forms.DataGridViewButtonColumn DeleteAction;
     }
 }

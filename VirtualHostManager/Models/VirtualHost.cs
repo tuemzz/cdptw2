@@ -10,10 +10,13 @@ namespace VirtualHostManager.Models
     {
         public string Url { set; get; }
         public string Directory { set; get; }
-        public string Date { set; get; }
         public string Description { set; get; }
         public bool Status { set; get; }
         public string Context { set; get; }
+        public string Author { set; get; }
+        public string CreateAt { set; get; }
+        public string UpdateAt { set; get; }
+
 
     }
     public enum VirtualHostDetailType

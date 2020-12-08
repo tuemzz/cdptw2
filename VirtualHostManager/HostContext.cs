@@ -22,24 +22,25 @@ namespace VirtualHostManager
         
         public void SaveChanges()
         {
-            var lines = File.ReadAllLines(_filePath);
+            var lines = File.ReadAllLines(_filePath).ToList();
             data.ForEach(x =>
             {
                 var line = string.Format("{0} {1} {2}", x.IpAddress, x.DomainName, x.Comment == "" ? "" : "#" + x.Comment);
                 if (x.Status)
                 {
-                    line = line.Prepend('#').ToString();
+                    line = "#" + line;
                 }
 
-                if (x.LineNumber != -1 && x.LineNumber < lines.Length)
+                if (x.LineNumber != -1 && x.LineNumber < lines.Count )
                 {
                     lines[x.LineNumber] = line;
                 }
                 else
                 {
-                    lines = lines.Append(line).ToArray();
+                    lines.Add(line);
                 }
             });
+            File.WriteAllLines(_filePath, lines);
         }
 
         public void Read()

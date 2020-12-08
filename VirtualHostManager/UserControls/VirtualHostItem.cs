@@ -34,7 +34,7 @@ namespace VirtualHostManager.UserControls
             get { return indexlbl.Text; }
             set { indexlbl.Text = value; }
         }
-        public string Date { set; get; }
+        public string CreateAt { set; get; }
         public string Description { set; get; }
         public bool Status
         {
@@ -52,7 +52,7 @@ namespace VirtualHostManager.UserControls
             dialog.formType = VirtualHostDetailType.View;
             dialog.Url = Url;
             dialog.Directory = Directory;
-            dialog.Date = Date;
+            dialog.CreateAt = CreateAt;
             dialog.Context = Context;
             dialog.Description = Description;
             dialog.Status = Status;
@@ -60,7 +60,7 @@ namespace VirtualHostManager.UserControls
             {
                 Url = dialog.Url;
                 Directory = dialog.Directory;
-                Date = dialog.Date;
+                CreateAt = dialog.CreateAt;
                 Context = dialog.Context;
                 Description = dialog.Description;
                 Status = dialog.Status;
@@ -76,7 +76,7 @@ namespace VirtualHostManager.UserControls
             dialog.formType = VirtualHostDetailType.Edit;
             dialog.Url = Url;
             dialog.Directory = Directory;
-            dialog.Date = Date;
+            dialog.CreateAt = CreateAt;
             dialog.Description = Description;
             dialog.Context = Context;
             dialog.Status = Status;
@@ -84,7 +84,7 @@ namespace VirtualHostManager.UserControls
             {
                 Url = dialog.Url;
                 Directory = dialog.Directory;
-                Date = dialog.Date;
+                CreateAt = dialog.CreateAt;
                 Description = dialog.Description;
                 Context = dialog.Context;
                 Status = dialog.Status;

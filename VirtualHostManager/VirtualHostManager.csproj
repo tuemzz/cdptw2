@@ -147,5 +147,26 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Back3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fastforward.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fastreverse.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Forward.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Forward1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
