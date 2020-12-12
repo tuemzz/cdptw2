@@ -443,13 +443,6 @@ namespace VirtualHostManager.Forms
         {
             var dialog = new VirtualHostManager.Forms.HostForm();
             dialog.ShowDialog();
-
-        }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var dialog = new VirtualHostManager.Forms.SettingForm();
-            dialog.ShowDialog();
         }
     }
 }
