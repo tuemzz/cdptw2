@@ -30,7 +30,7 @@ namespace VirtualHostManager
                 subContext.Append("# Virtural Host Manager" + System.Environment.NewLine);
                 subContext.Append("# Url:" + x.Url + System.Environment.NewLine);
                 subContext.Append("# Directory:" + x.Directory + System.Environment.NewLine);
-                subContext.Append("# Date:" + x.Date + System.Environment.NewLine);
+                subContext.Append("# CreateAt:" + x.CreateAt + System.Environment.NewLine);
                 subContext.Append("# Description:" + x.Description + System.Environment.NewLine);
                 subContext.Append("###" + System.Environment.NewLine);
                 subContext.Append(string.Join(System.Environment.NewLine, x.Context.Split(new[] { System.Environment.NewLine }, StringSplitOptions.None).Select(xx => Prefix + xx)));
@@ -69,7 +69,7 @@ namespace VirtualHostManager
                     return new VirtualHost()
                     {
                         Url = Regex.Match(userDeclareData, @"Url:(.*?)\n").Value.Replace("Url:", "").Replace("\r\n", ""),
-                        Date = Regex.Match(userDeclareData, @"Date:(.*?)\n").Value.Replace("Date:", "").Replace("\r\n", ""),
+                        CreateAt = Regex.Match(userDeclareData, @"CreateAt:(.*?)\n").Value.Replace("CreateAt:", "").Replace("\r\n", ""),
                         Description = Regex.Match(userDeclareData, @"Description:(.*?)\n").Value.Replace("Description:", "").Replace("\r\n", ""),
                         Directory = Regex.Match(userDeclareData, @"Directory:(.*?)\n").Value.Replace("Directory:", "").Replace("\r\n", ""),
                         Context = context,

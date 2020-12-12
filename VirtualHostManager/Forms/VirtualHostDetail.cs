@@ -36,7 +36,7 @@ namespace VirtualHostManager.Forms
             get { return directoryText.Text; }
             set { directoryText.Text = value; }
         }
-        public string Date
+        public string CreateAt
         {
             get { return dateCreated.Value.ToString(); }
             set { dateCreated.Value = string.IsNullOrEmpty(value) ? DateTime.Now : DateTime.Parse(value); }
