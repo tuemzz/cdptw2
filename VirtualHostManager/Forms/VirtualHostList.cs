@@ -13,6 +13,7 @@ using System.ServiceProcess;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VirtualHostManager.Extensions;
 using VirtualHostManager.Models;
 using VirtualHostManager.Service;
 using VirtualHostManager.UserControls;
@@ -94,39 +95,6 @@ namespace VirtualHostManager.Forms
                 newItem.CreateAt = x.CreateAt;
                 newItem.Context = x.Context;
                 newItem.Status = x.Status;
-
-                /*
-                 * Set up callback
-                 */
-                //newItem.UpdateFormCallback = () =>
-                //{
-                //    var listData = new List<VirtualHost>();
-                //    foreach (VirtualHostItem c in listVirtualHostForm)
-                //    {
-                //        listData.Add(new VirtualHost()
-                //        {
-                //            Url = c.Url,
-                //            Directory = c.Directory,
-                //            Description = c.Description,
-                //            CreateAt = c.CreateAt,
-                //            Context = c.Context,
-                //            Status = c.Status,
-                //        });
-                //    }
-                //    context.data = listData;
-                //    context.SaveChanges();
-
-                //    ServiceController sc = new ServiceController("wampapache64");
-                //    if (sc.Site != null && sc.Status == ServiceControllerStatus.Running)
-                //    {
-                //        Task.Run(() =>
-                //        {
-                //            sc.Stop();
-                //            sc.WaitForStatus(ServiceControllerStatus.Stopped);
-                //            sc.Start();
-                //        });
-                //    }
-                //};
                 newItem.DeleteCallback = () =>
                 {
                     flowLayoutPanel1.Controls.Remove(newItem);
@@ -140,6 +108,16 @@ namespace VirtualHostManager.Forms
             CurrentPage = 1;
             RefreshPagination();
             RebindGridForPageChange();
+
+            var columnConfig = dataStorageService.Read<VirtualHostDataGridViewColumns>(AppConst.VirtualHostColumns);
+            var list = columnConfig.GetType()
+                                              .GetProperties()
+                                              .Select(x => new { Name = x.Name, Value = (bool)x.GetValue(columnConfig) })
+                                              .ToList();
+            list.ForEach(x =>
+            {
+                dataGridView1.Columns[x.Name + "DataGridViewTextBoxColumn"].Visible = x.Value;
+            });
         }
         private void RebindGridForPageChange()
         {
@@ -294,9 +272,15 @@ namespace VirtualHostManager.Forms
                 context.SaveChanges();
 
                 ServiceController sc = new ServiceController("wampapache64");
+
                 if (sc.Site != null && sc.Status == ServiceControllerStatus.Running)
                 {
-                    sc.Start();
+                    Task.Run(() =>
+                    {
+                        sc.Stop();
+                        sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                        sc.Start();
+                    });
                 }
             };
             newItem.DeleteCallback = () =>
@@ -323,51 +307,32 @@ namespace VirtualHostManager.Forms
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            var newItem = new VirtualHostItem();
-            newItem.Id = (flowLayoutPanel1.Controls.Count + 1).ToString();
-            newItem.Context = @"<VirtualHost *:80>
-  ServerName localhost
-  ServerAlias localhost
-  DocumentRoot ""${INSTALL_DIR}/www""
-  < Directory ""${INSTALL_DIR}/www/"" >
-     Options + Indexes + Includes + FollowSymLinks + MultiViews
-    AllowOverride All
-    Require local
-  </ Directory >
-</ VirtualHost > ";
-            /*
-             * Set up callback
-             */
-            //newItem.UpdateFormCallback = () =>
-            //{
-            //    var listData = new List<VirtualHost>();
-            //    foreach (VirtualHostItem c in listVirtualHostForm)
-            //    {
-            //        listData.Add(new VirtualHost()
-            //        {
-            //            Url = c.Url,
-            //            Directory = c.Directory,
-            //            Description = c.Description,
-            //            CreateAt = c.CreateAt,
-            //            Context = c.Context,
-            //            Status = c.Status,
-            //        });
-            //    }
-            //    context.data = listData;
-            //    context.SaveChanges();
-
-            //    ServiceController sc = new ServiceController("wampapache64");
-            //    if (sc.Site != null && sc.Status == ServiceControllerStatus.Running)
-            //    {
-            //        sc.Start();
-            //    }
-            //};
-            newItem.DeleteCallback = () =>
+            var model = new VirtualHost();
+            //listVirtualHostForm.Add(newItem);var dialog = new VirtualHostManager.Forms.VirtualHostDetail();
+            var dialog = new VirtualHostManager.Forms.VirtualHostDetail();
+            dialog.formType = VirtualHostDetailType.Edit;
+            dialog.Url = "";
+            dialog.Directory = "";
+            dialog.CreateAt = "";
+            dialog.Description = "";
+            dialog.Context = dataStorageService.VirualHostTemplateRead(AppConst.VirtualHostTemplate);
+            dialog.Status = true;
+            dialog.saveCallback = () =>
             {
-                flowLayoutPanel1.Controls.Remove(newItem);
+                model.Url = dialog.Url;
+                model.Directory = dialog.Directory;
+                model.CreateAt = DateTime.Now.ToString();
+                model.UpdateAt = DateTime.Now.ToString();
+                model.Description = dialog.Description;
+                model.Context = dialog.Context;
+                model.Status = dialog.Status;
+                context.data.Add(model);
+                //Rebind the Datagridview with the data.
+                RebindGridForPageChange();
+                context.SaveChanges();
+                setItems();
             };
-            flowLayoutPanel1.Controls.Add(newItem);
-            //listVirtualHostForm.Add(newItem);
+            dialog.ShowDialog();
 
         }
 
@@ -414,6 +379,7 @@ namespace VirtualHostManager.Forms
                         model.Url = dialog.Url;
                         model.Directory = dialog.Directory;
                         model.CreateAt = dialog.CreateAt;
+                        model.UpdateAt = DateTime.Now.ToString();
                         model.Description = dialog.Description;
                         model.Context = dialog.Context;
                         model.Status = dialog.Status;
@@ -443,6 +409,13 @@ namespace VirtualHostManager.Forms
         {
             var dialog = new VirtualHostManager.Forms.HostForm();
             dialog.ShowDialog();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dialog = new VirtualHostManager.Forms.SettingForm();
+            dialog.ShowDialog();
+            setItems();
         }
     }
 }

@@ -9,6 +9,7 @@ namespace VirtualHostManager.Models
     public class AppConst
     {
         public static string filePathConfig = "filePathConfig.txt";
-        public static string VirtualHostCoumns = "VirtualHostColumns.txt";
+        public static string VirtualHostColumns = "VirtualHostColumns.txt";
+        public static string VirtualHostTemplate = "VirtualHostTemplate.txt";
     }
 }

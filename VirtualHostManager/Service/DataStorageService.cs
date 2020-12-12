@@ -22,7 +22,17 @@ namespace VirtualHostManager.Service
             var fileStream = new FileStream(Application.UserAppDataPath + fileName, FileMode.Truncate, FileAccess.ReadWrite);
 
             var serializeData = JsonConvert.SerializeObject(data);
-            byte[] info = new UTF8Encoding(false).GetBytes(serializeData);
+            byte[] info = new UTF8Encoding(true).GetBytes(serializeData);
+            fileStream.Write(info, 0, info.Length);
+
+            fileStream.Close();
+        }
+        public void Save(string fileName, string data)
+        {
+
+            var fileStream = new FileStream(Application.UserAppDataPath + fileName, FileMode.Truncate, FileAccess.ReadWrite);
+
+            byte[] info = new UTF8Encoding(true).GetBytes(data);
             fileStream.Write(info, 0, info.Length);
 
             fileStream.Close();
@@ -31,7 +41,7 @@ namespace VirtualHostManager.Service
         {
             if(!File.Exists(Application.UserAppDataPath + fileName))
             {
-                File.Create(Application.UserAppDataPath + fileName);
+                File.Create(Application.UserAppDataPath + fileName).Close();
             }
             using (StreamReader r = new StreamReader(Application.UserAppDataPath + fileName))
             {

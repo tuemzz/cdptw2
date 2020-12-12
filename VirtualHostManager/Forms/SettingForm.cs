@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using VirtualHostManager.Extensions;
 using VirtualHostManager.Models;
 using VirtualHostManager.Service;
 
@@ -22,7 +23,9 @@ namespace VirtualHostManager.Forms
             InitializeComponent();
 
             dataStorageService = new DataStorageService();
-            hostDataGridViewColumns = dataStorageService.Read<VirtualHostDataGridViewColumns>(AppConst.VirtualHostCoumns);
+
+            #region Init config column
+            hostDataGridViewColumns = dataStorageService.Read<VirtualHostDataGridViewColumns>(AppConst.VirtualHostColumns);
             if (hostDataGridViewColumns == null)
             {
                 hostDataGridViewColumns = new VirtualHostDataGridViewColumns()
@@ -47,6 +50,11 @@ namespace VirtualHostManager.Forms
                 checkedListBox1.Items.Add(x.Name);
                 checkedListBox1.SetItemChecked(checkedListBox1.Items.Count - 1, x.Value);
             });
+            #endregion
+
+            #region Init virtual host template
+            virtualHostTemplateTxt.Text = dataStorageService.VirualHostTemplateRead(AppConst.VirtualHostTemplate);
+            #endregion
         }
 
         private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -56,7 +64,12 @@ namespace VirtualHostManager.Forms
             hostDataGridViewColumns.GetType()
                                    .GetProperty(checkedListBox1.Items[e.Index].ToString())
                                    .SetValue(hostDataGridViewColumns, value);
-            dataStorageService.Save(AppConst.VirtualHostCoumns, hostDataGridViewColumns);
+            dataStorageService.Save(AppConst.VirtualHostColumns, hostDataGridViewColumns);
+        }
+
+        private void SettingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dataStorageService.Save(AppConst.VirtualHostTemplate, virtualHostTemplateTxt.Text);
         }
     }
 }

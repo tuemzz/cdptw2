@@ -74,6 +74,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\VirualHostTemplateReadExtension.cs" />
     <Compile Include="Forms\GetDirectoryForm.cs">
       <SubType>Form</SubType>
     </Compile>

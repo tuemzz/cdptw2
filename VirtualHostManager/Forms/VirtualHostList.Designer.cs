@@ -37,12 +37,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label5 = new MaterialSkin.Controls.MaterialLabel();
             this.textBox1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đổiĐườngDẫnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thoátToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restartWampToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,23 +60,18 @@
             this.btnForward = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.virtualHostBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.EditAction = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DeleteAction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.directoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updateAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ErrorLogs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorlogsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditAction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.DeleteAction = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.virtualHostBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -117,12 +112,12 @@
             this.urlDataGridViewTextBoxColumn,
             this.directoryDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
-            this.statusDataGridViewCheckBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
             this.contextDataGridViewTextBoxColumn,
             this.authorDataGridViewTextBoxColumn,
             this.createAtDataGridViewTextBoxColumn,
             this.updateAtDataGridViewTextBoxColumn,
-            this.ErrorLogs,
+            this.errorlogsDataGridViewTextBoxColumn,
             this.EditAction,
             this.DeleteAction});
             this.dataGridView1.DataSource = this.virtualHostBindingSource3;
@@ -147,20 +142,6 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.label5.Depth = 0;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(798, 24);
-            this.label5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 18);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Tìm kiếm: ";
             // 
             // textBox1
             // 
@@ -209,20 +190,27 @@
             // đổiĐườngDẫnToolStripMenuItem
             // 
             this.đổiĐườngDẫnToolStripMenuItem.Name = "đổiĐườngDẫnToolStripMenuItem";
-            this.đổiĐườngDẫnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đổiĐườngDẫnToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.đổiĐườngDẫnToolStripMenuItem.Text = "Open File";
             this.đổiĐườngDẫnToolStripMenuItem.Click += new System.EventHandler(this.đổiĐườngDẫnToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.saveAsToolStripMenuItem.Text = "Save as";
+            // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.thoátToolStripMenuItem.Text = "Exit";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click_1);
             // 
@@ -267,7 +255,6 @@
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(736, 14);
             this.materialFlatButton1.Location = new System.Drawing.Point(714, 6);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -399,39 +386,9 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Tìm kiếm: ";
             // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.BackColor = System.Drawing.Color.White;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Padding = new System.Windows.Forms.Padding(12);
-            this.toolStripButton1.Size = new System.Drawing.Size(47, 41);
-            this.toolStripButton1.Text = "1";
-            this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButtonClick);
-            // 
             // virtualHostBindingSource3
             // 
             this.virtualHostBindingSource3.DataSource = typeof(VirtualHostManager.Models.VirtualHost);
-            // EditAction
-            // 
-            this.EditAction.HeaderText = "";
-            this.EditAction.Name = "EditAction";
-            this.EditAction.ReadOnly = true;
-            // 
-            // DeleteAction
-            // 
-            this.DeleteAction.HeaderText = "";
-            this.DeleteAction.Name = "DeleteAction";
-            this.DeleteAction.ReadOnly = true;
             // 
             // urlDataGridViewTextBoxColumn
             // 
@@ -458,13 +415,13 @@
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // statusDataGridViewCheckBoxColumn
+            // statusDataGridViewTextBoxColumn
             // 
-            this.statusDataGridViewCheckBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            this.statusDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.statusDataGridViewCheckBoxColumn.Width = 50;
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.Width = 50;
             // 
             // contextDataGridViewTextBoxColumn
             // 
@@ -495,12 +452,12 @@
             this.updateAtDataGridViewTextBoxColumn.Name = "updateAtDataGridViewTextBoxColumn";
             this.updateAtDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // ErrorLogs
+            // errorlogsDataGridViewTextBoxColumn
             // 
-            this.ErrorLogs.DataPropertyName = "Url";
-            this.ErrorLogs.HeaderText = "ErrorLogs";
-            this.ErrorLogs.Name = "ErrorLogs";
-            this.ErrorLogs.ReadOnly = true;
+            this.errorlogsDataGridViewTextBoxColumn.DataPropertyName = "Url";
+            this.errorlogsDataGridViewTextBoxColumn.HeaderText = "ErrorLogs";
+            this.errorlogsDataGridViewTextBoxColumn.Name = "errorlogsDataGridViewTextBoxColumn";
+            this.errorlogsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // EditAction
             // 
@@ -513,9 +470,6 @@
             this.DeleteAction.HeaderText = "";
             this.DeleteAction.Name = "DeleteAction";
             this.DeleteAction.ReadOnly = true;
-            // virtualHostBindingSource3
-            // 
-            this.virtualHostBindingSource3.DataSource = typeof(VirtualHostManager.Models.VirtualHost);
             // 
             // VirtualHostList
             // 
@@ -528,7 +482,6 @@
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.flowLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "VirtualHostList";
@@ -551,7 +504,6 @@
         #endregion
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private MaterialSkin.Controls.MaterialLabel label5;
         private MaterialSkin.Controls.MaterialSingleLineTextField textBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -581,12 +533,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn urlDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn directoryDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn statusDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contextDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createAtDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn updateAtDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ErrorLogs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn errorlogsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditAction;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteAction;
     }
