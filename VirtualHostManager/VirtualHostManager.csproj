@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -150,6 +153,7 @@
       <DependentUpon>VirtualHostItem.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\VirtualHostManager.Models.Hosts.datasource" />
     <None Include="Properties\DataSources\VirtualHostManager.Models.VirtualHost.datasource" />

@@ -13,19 +13,13 @@ using VirtualHostManager.Models;
 
 namespace VirtualHostManager.Forms
 {
-    public partial class HostForm : MaterialForm
+    public partial class HostForm : Form
     {
 
         private HostContext context;
         public HostForm()
         {
             InitializeComponent();
-
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-
             context = new HostContext();
             context.Read();
             var list = new BindingList<Hosts>();
@@ -34,14 +28,6 @@ namespace VirtualHostManager.Forms
                 list.Add(x);
             });
             //dataGridView1.DataSource = list;
-            var editColumn = new DataGridViewButtonColumn
-            {
-                Text = "Edit",
-                UseColumnTextForButtonValue = true,
-                Name = "Edit",
-                DataPropertyName = "Edit",
-        };
-            dataGridView1.Columns.Add(editColumn);
             dataGridView1.DataSource = list;
 
         }
@@ -50,7 +36,7 @@ namespace VirtualHostManager.Forms
         {
             var senderGrid = (DataGridView)sender;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0 && e.ColumnIndex == 5 && e.RowIndex + 1 < senderGrid.RowCount)
+                e.RowIndex >= 0 && e.ColumnIndex == 5)
             {
                 dataGridView1.Rows.RemoveAt(e.RowIndex);
             }
@@ -66,13 +52,14 @@ namespace VirtualHostManager.Forms
             var list = ((BindingList<Hosts>)dataGridView1.DataSource).ToList();
             context.data = list.Select(x =>
             {
-                if (x.LineNumber == 0)
-                {
-                    x.LineNumber = -1;
-                }
                 return x;
             }).ToList();
             context.SaveChanges();
+        }
+
+        private void addNewBtn_Click(object sender, EventArgs e)
+        {
+            ((BindingList<Hosts>)dataGridView1.DataSource).Insert(0, new Hosts());
         }
     }
 }

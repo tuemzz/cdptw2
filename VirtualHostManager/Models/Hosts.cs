@@ -8,7 +8,6 @@ namespace VirtualHostManager.Models
 {
     public class Hosts
     {
-        public int LineNumber { set; get; }
         public bool Status { set; get; }
         public string IpAddress { set; get; }
         public string DomainName { set; get; }

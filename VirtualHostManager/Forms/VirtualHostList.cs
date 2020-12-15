@@ -28,7 +28,7 @@ namespace VirtualHostManager.Forms
 
         private int CurrentPage = 1;
         int PagesCount = 1;
-        int pageRows = 10;
+        int pageRows = 20;
         public VirtualHostList()
         {
             InitializeComponent();
@@ -110,6 +110,20 @@ namespace VirtualHostManager.Forms
             RebindGridForPageChange();
 
             var columnConfig = dataStorageService.Read<VirtualHostDataGridViewColumns>(AppConst.VirtualHostColumns);
+            if (columnConfig == null)
+            {
+                columnConfig = new VirtualHostDataGridViewColumns()
+                {
+                    Author = true,
+                    CreateAt = true,
+                    Description = true,
+                    Directory = true,
+                    ErrorLogs = true,
+                    Status = true,
+                    UpdateAt = true,
+                    Url = true,
+                };
+            }
             var list = columnConfig.GetType()
                                               .GetProperties()
                                               .Select(x => new { Name = x.Name, Value = (bool)x.GetValue(columnConfig) })
@@ -123,7 +137,7 @@ namespace VirtualHostManager.Forms
         {
             try
             {
-                var data = context.data.Where(x => x.Url.Contains(textBox1.Text)).ToList();
+                var data = context.data.Where(x => x.Url.Contains(textBox1.Text) || x.Directory.Contains(textBox1.Text)).ToList();
                 PagesCount = Convert.ToInt32(Math.Ceiling(data.Count * 1.0 / pageRows));
                 //Rebinding the Datagridview with data
                 int datasourcestartIndex = (CurrentPage - 1) * pageRows;
@@ -269,19 +283,7 @@ namespace VirtualHostManager.Forms
                     });
                 }
                 context.data = listData;
-                context.SaveChanges();
 
-                ServiceController sc = new ServiceController("wampapache64");
-
-                if (sc.Site != null && sc.Status == ServiceControllerStatus.Running)
-                {
-                    Task.Run(() =>
-                    {
-                        sc.Stop();
-                        sc.WaitForStatus(ServiceControllerStatus.Stopped);
-                        sc.Start();
-                    });
-                }
             };
             newItem.DeleteCallback = () =>
             {
@@ -326,10 +328,10 @@ namespace VirtualHostManager.Forms
                 model.Description = dialog.Description;
                 model.Context = dialog.Context;
                 model.Status = dialog.Status;
+                model.Author = dialog.Author;
                 context.data.Add(model);
                 //Rebind the Datagridview with the data.
                 RebindGridForPageChange();
-                context.SaveChanges();
                 setItems();
             };
             dialog.ShowDialog();
@@ -374,6 +376,8 @@ namespace VirtualHostManager.Forms
                     dialog.Description = model.Description;
                     dialog.Context = model.Context;
                     dialog.Status = model.Status;
+                    dialog.Author = model.Author;
+
                     dialog.saveCallback = () =>
                     {
                         model.Url = dialog.Url;
@@ -383,10 +387,10 @@ namespace VirtualHostManager.Forms
                         model.Description = dialog.Description;
                         model.Context = dialog.Context;
                         model.Status = dialog.Status;
+                        model.Author = dialog.Author;
                         context.data[index] = model;
                         //Rebind the Datagridview with the data.
                         RebindGridForPageChange();
-                        context.SaveChanges();
                     };
                     dialog.ShowDialog();
             }
@@ -396,7 +400,6 @@ namespace VirtualHostManager.Forms
                 var index = Int32.Parse((string)gridView.Rows[e.RowIndex].HeaderCell.Value) - 1;
                 context.data.RemoveAt(index);
                 RebindGridForPageChange();
-                context.SaveChanges();
             }
         }
 
@@ -416,6 +419,58 @@ namespace VirtualHostManager.Forms
             var dialog = new VirtualHostManager.Forms.SettingForm();
             dialog.ShowDialog();
             setItems();
+        }
+
+        private void restartXamppToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ServiceController sc = new ServiceController("wampapache64");
+
+            if (sc.Site != null && sc.Status == ServiceControllerStatus.Running)
+            {
+                Task.Run(() =>
+                {
+                    sc.Stop();
+                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                    sc.Start();
+                });
+            }
+        }
+
+        private void restartWampToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ServiceController sc = new ServiceController("wampapache64");
+
+            if (sc.Site != null && sc.Status == ServiceControllerStatus.Running)
+            {
+                Task.Run(() =>
+                {
+                    sc.Stop();
+                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
+                    sc.Start();
+                });
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            context.SaveChanges();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            using (SaveFileDialog dialog = new SaveFileDialog())
+            {
+                dialog.RestoreDirectory = true;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Can use dialog.FileName
+                    // Save data
+                    context.setPath(dialog.FileName);
+                    context.SaveChanges();
+                }
+            }
         }
     }
 }

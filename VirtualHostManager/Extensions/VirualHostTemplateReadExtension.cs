@@ -17,13 +17,15 @@ namespace VirtualHostManager.Extensions
                 result = @"<VirtualHost *:80>
   ServerName localhost
   ServerAlias localhost
+  ErrorLog ""logs/dummy-host.example.com-error.log""
+  CustomLog ""logs/dummy-host.example.com-access.log"" common
   DocumentRoot ""${INSTALL_DIR}/www""
   < Directory ""${INSTALL_DIR}/www/"" >
      Options + Indexes + Includes + FollowSymLinks + MultiViews
     AllowOverride All
     Require local
   </ Directory >
-</ VirtualHost > ";
+</ VirtualHost> ";
             }
             return result;
         }

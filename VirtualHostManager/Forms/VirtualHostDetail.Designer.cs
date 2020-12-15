@@ -43,12 +43,14 @@ namespace VirtualHostManager.Forms
             this.saveBtn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.cancelBtn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.statuschkBox = new MaterialSkin.Controls.MaterialCheckBox();
+            this.authortxt = new System.Windows.Forms.TextBox();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.SuspendLayout();
             // 
             // noteText
             // 
-            this.noteText.Location = new System.Drawing.Point(13, 233);
+            this.noteText.Location = new System.Drawing.Point(13, 241);
             this.noteText.Multiline = true;
             this.noteText.Name = "noteText";
             this.noteText.Size = new System.Drawing.Size(409, 35);
@@ -60,7 +62,7 @@ namespace VirtualHostManager.Forms
             this.label4.Depth = 0;
             this.label4.Font = new System.Drawing.Font("Roboto", 11F);
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(12, 211);
+            this.label4.Location = new System.Drawing.Point(12, 219);
             this.label4.MouseState = MaterialSkin.MouseState.HOVER;
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 19);
@@ -73,7 +75,7 @@ namespace VirtualHostManager.Forms
             this.label3.Depth = 0;
             this.label3.Font = new System.Drawing.Font("Roboto", 11F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(12, 166);
+            this.label3.Location = new System.Drawing.Point(12, 174);
             this.label3.MouseState = MaterialSkin.MouseState.HOVER;
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 19);
@@ -82,14 +84,14 @@ namespace VirtualHostManager.Forms
             // 
             // dateCreated
             // 
-            this.dateCreated.Location = new System.Drawing.Point(12, 188);
+            this.dateCreated.Location = new System.Drawing.Point(12, 196);
             this.dateCreated.Name = "dateCreated";
             this.dateCreated.Size = new System.Drawing.Size(409, 20);
             this.dateCreated.TabIndex = 12;
             // 
             // directoryText
             // 
-            this.directoryText.Location = new System.Drawing.Point(12, 143);
+            this.directoryText.Location = new System.Drawing.Point(12, 106);
             this.directoryText.Name = "directoryText";
             this.directoryText.Size = new System.Drawing.Size(409, 20);
             this.directoryText.TabIndex = 11;
@@ -100,7 +102,7 @@ namespace VirtualHostManager.Forms
             this.label2.Depth = 0;
             this.label2.Font = new System.Drawing.Font("Roboto", 11F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(12, 121);
+            this.label2.Location = new System.Drawing.Point(12, 84);
             this.label2.MouseState = MaterialSkin.MouseState.HOVER;
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(140, 19);
@@ -109,7 +111,7 @@ namespace VirtualHostManager.Forms
             // 
             // urlText
             // 
-            this.urlText.Location = new System.Drawing.Point(13, 98);
+            this.urlText.Location = new System.Drawing.Point(13, 31);
             this.urlText.Name = "urlText";
             this.urlText.Size = new System.Drawing.Size(409, 20);
             this.urlText.TabIndex = 9;
@@ -120,7 +122,7 @@ namespace VirtualHostManager.Forms
             this.label1.Depth = 0;
             this.label1.Font = new System.Drawing.Font("Roboto", 11F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(12, 76);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.MouseState = MaterialSkin.MouseState.HOVER;
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 19);
@@ -129,7 +131,7 @@ namespace VirtualHostManager.Forms
             // 
             // ContextText
             // 
-            this.ContextText.Location = new System.Drawing.Point(12, 293);
+            this.ContextText.Location = new System.Drawing.Point(12, 301);
             this.ContextText.Multiline = true;
             this.ContextText.Name = "ContextText";
             this.ContextText.Size = new System.Drawing.Size(409, 150);
@@ -142,7 +144,7 @@ namespace VirtualHostManager.Forms
             this.label5.Depth = 0;
             this.label5.Font = new System.Drawing.Font("Roboto", 11F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(12, 271);
+            this.label5.Location = new System.Drawing.Point(12, 279);
             this.label5.MouseState = MaterialSkin.MouseState.HOVER;
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 19);
@@ -154,7 +156,8 @@ namespace VirtualHostManager.Forms
             this.saveBtn.AutoSize = true;
             this.saveBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.saveBtn.Depth = 0;
-            this.saveBtn.Location = new System.Drawing.Point(375, 464);
+            this.saveBtn.Icon = null;
+            this.saveBtn.Location = new System.Drawing.Point(375, 497);
             this.saveBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Primary = true;
@@ -169,7 +172,8 @@ namespace VirtualHostManager.Forms
             this.cancelBtn.AutoSize = true;
             this.cancelBtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cancelBtn.Depth = 0;
-            this.cancelBtn.Location = new System.Drawing.Point(320, 464);
+            this.cancelBtn.Icon = null;
+            this.cancelBtn.Location = new System.Drawing.Point(320, 497);
             this.cancelBtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Primary = true;
@@ -183,37 +187,58 @@ namespace VirtualHostManager.Forms
             // 
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(16, 456);
+            this.materialDivider1.Location = new System.Drawing.Point(16, 489);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
             this.materialDivider1.Size = new System.Drawing.Size(406, 2);
             this.materialDivider1.TabIndex = 22;
             this.materialDivider1.Text = "materialDivider1";
             // 
-            // materialCheckBox1
+            // statuschkBox
             // 
-            this.materialCheckBox1.AutoSize = true;
-            this.materialCheckBox1.Depth = 0;
-            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox1.Location = new System.Drawing.Point(16, 466);
-            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckBox1.Name = "materialCheckBox1";
-            this.materialCheckBox1.Ripple = true;
-            this.materialCheckBox1.Size = new System.Drawing.Size(150, 30);
-            this.materialCheckBox1.TabIndex = 23;
-            this.materialCheckBox1.Text = "materialCheckBox1";
-            this.materialCheckBox1.UseVisualStyleBackColor = true;
-            this.materialCheckBox1.Visible = false;
+            this.statuschkBox.AutoSize = true;
+            this.statuschkBox.Depth = 0;
+            this.statuschkBox.Font = new System.Drawing.Font("Roboto", 10F);
+            this.statuschkBox.Location = new System.Drawing.Point(12, 54);
+            this.statuschkBox.Margin = new System.Windows.Forms.Padding(0);
+            this.statuschkBox.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.statuschkBox.MouseState = MaterialSkin.MouseState.HOVER;
+            this.statuschkBox.Name = "statuschkBox";
+            this.statuschkBox.Ripple = true;
+            this.statuschkBox.Size = new System.Drawing.Size(93, 30);
+            this.statuschkBox.TabIndex = 23;
+            this.statuschkBox.Text = "Trạng thái";
+            this.statuschkBox.UseVisualStyleBackColor = true;
+            // 
+            // authortxt
+            // 
+            this.authortxt.Location = new System.Drawing.Point(12, 151);
+            this.authortxt.Name = "authortxt";
+            this.authortxt.Size = new System.Drawing.Size(409, 20);
+            this.authortxt.TabIndex = 25;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(12, 129);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(54, 19);
+            this.materialLabel1.TabIndex = 24;
+            this.materialLabel1.Text = "Author";
             // 
             // VirtualHostDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(433, 508);
-            this.Controls.Add(this.materialCheckBox1);
+            this.ClientSize = new System.Drawing.Size(433, 545);
+            this.Controls.Add(this.authortxt);
+            this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.statuschkBox);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.saveBtn);
@@ -228,7 +253,6 @@ namespace VirtualHostManager.Forms
             this.Controls.Add(this.urlText);
             this.Controls.Add(this.label1);
             this.Name = "VirtualHostDetail";
-            this.Sizable = false;
             this.Text = "Chi tiết";
             this.Load += new System.EventHandler(this.VirtualHostDetail_Load);
             this.ResumeLayout(false);
@@ -251,6 +275,8 @@ namespace VirtualHostManager.Forms
         private MaterialSkin.Controls.MaterialRaisedButton saveBtn;
         private MaterialSkin.Controls.MaterialRaisedButton cancelBtn;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
+        private MaterialSkin.Controls.MaterialCheckBox statuschkBox;
+        private System.Windows.Forms.TextBox authortxt;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

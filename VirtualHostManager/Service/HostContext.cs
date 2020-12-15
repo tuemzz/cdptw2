@@ -22,7 +22,7 @@ namespace VirtualHostManager
         
         public void SaveChanges()
         {
-            var lines = File.ReadAllLines(_filePath).ToList();
+            var lines = new List<string>();
             data.ForEach(x =>
             {
                 var line = string.Format("{0} {1} {2}", x.IpAddress, x.DomainName, x.Comment == "" ? "" : "#" + x.Comment);
@@ -30,15 +30,7 @@ namespace VirtualHostManager
                 {
                     line = "#" + line;
                 }
-
-                if (x.LineNumber != -1 && x.LineNumber < lines.Count )
-                {
-                    lines[x.LineNumber] = line;
-                }
-                else
-                {
-                    lines.Add(line);
-                }
+                lines.Add(line);
             });
             File.WriteAllLines(_filePath, lines);
         }
@@ -58,7 +50,6 @@ namespace VirtualHostManager
                         var line = lines[i].Trim();
                         var host = new Hosts()
                         {
-                            LineNumber = i,
                             Status = !line.StartsWith("#"),
                             IpAddress = Regex.Match(line, @"\d{0,3}\.\d{0,3}\.\d{0,3}\.\d{0,3}").Value,
                             DomainName = Regex.Match(line, @"\s(.*?)(\s|$)").Value.Trim(),

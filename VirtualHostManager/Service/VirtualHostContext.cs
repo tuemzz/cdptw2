@@ -19,6 +19,11 @@ namespace VirtualHostManager
         {
             _filePath = filePath;
         }
+
+        public void setPath(string path)
+        {
+            _filePath = path;
+        }
         
         public void SaveChanges()
         {
@@ -28,9 +33,11 @@ namespace VirtualHostManager
                 var Prefix = x.Status ? "" : "#";
                 var subContext = new StringBuilder();
                 subContext.Append("# Virtural Host Manager" + System.Environment.NewLine);
+                subContext.Append("# Author:" + x.Author + System.Environment.NewLine);
                 subContext.Append("# Url:" + x.Url + System.Environment.NewLine);
                 subContext.Append("# Directory:" + x.Directory + System.Environment.NewLine);
                 subContext.Append("# CreateAt:" + x.CreateAt + System.Environment.NewLine);
+                subContext.Append("# UpdateAt:" + x.UpdateAt + System.Environment.NewLine);
                 subContext.Append("# Description:" + x.Description + System.Environment.NewLine);
                 subContext.Append("###" + System.Environment.NewLine);
                 subContext.Append(string.Join(System.Environment.NewLine, x.Context.Split(new[] { System.Environment.NewLine }, StringSplitOptions.None).Select(xx => Prefix + xx)));
@@ -73,6 +80,9 @@ namespace VirtualHostManager
                         Description = Regex.Match(userDeclareData, @"Description:(.*?)\n").Value.Replace("Description:", "").Replace("\r\n", ""),
                         Directory = Regex.Match(userDeclareData, @"Directory:(.*?)\n").Value.Replace("Directory:", "").Replace("\r\n", ""),
                         Context = context,
+                        Author = Regex.Match(userDeclareData, @"Author:(.*?)\n").Value.Replace("Author:", "").Replace("\r\n", ""),
+                        UpdateAt = Regex.Match(userDeclareData, @"UpdateAt:(.*?)\n").Value.Replace("UpdateAt:", "").Replace("\r\n", ""),
+                        ErrorLogs = Regex.Match(x, @"ErrorLog(.*?)\n").Value.Replace("ErrorLog", "").Replace("\r\n", ""),
                         Status = status
                     };
                 }).ToList();

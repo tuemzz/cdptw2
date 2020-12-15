@@ -13,16 +13,11 @@ using VirtualHostManager.Models;
 
 namespace VirtualHostManager.Forms
 {
-    public partial class VirtualHostDetail : MaterialForm
+    public partial class VirtualHostDetail : Form
     {
         public VirtualHostDetail()
         {
             InitializeComponent();
-
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
 
         }
         public VirtualHostDetailType formType { set; get; }
@@ -46,10 +41,15 @@ namespace VirtualHostManager.Forms
             get { return noteText.Text; }
             set { noteText.Text = value; }
         }
+        public string Author
+        {
+            get { return authortxt.Text; }
+            set { authortxt.Text = value; }
+        }
         public bool Status
         {
-            get { return materialCheckBox1.Checked; }
-            set { materialCheckBox1.Checked = value; }
+            get { return statuschkBox.Checked; }
+            set { statuschkBox.Checked = value; }
         }
         public string Context
         {
@@ -64,7 +64,7 @@ namespace VirtualHostManager.Forms
             if(formType == VirtualHostDetailType.View)
             {
                 ContextText.Enabled = false;
-                materialCheckBox1.Checked = false;
+                statuschkBox.Checked = false;
                 directoryText.Enabled = false;
                 noteText.Enabled = false;
                 urlText.Enabled = false;
