@@ -436,5 +436,10 @@ namespace VirtualHostManager.Forms
 
             return p;
         }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

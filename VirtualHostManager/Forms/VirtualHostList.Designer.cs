@@ -37,9 +37,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.errorlogsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditAction = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DeleteAction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.textBox1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +60,9 @@
             this.btnForward = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorlogsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditAction = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteAction = new System.Windows.Forms.DataGridViewButtonColumn();
             this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.directoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -143,26 +143,6 @@
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
             // 
-            // errorlogsDataGridViewTextBoxColumn
-            // 
-            this.errorlogsDataGridViewTextBoxColumn.DataPropertyName = "ErrorLogs";
-            this.errorlogsDataGridViewTextBoxColumn.HeaderText = "ErrorLogs";
-            this.errorlogsDataGridViewTextBoxColumn.Name = "errorlogsDataGridViewTextBoxColumn";
-            this.errorlogsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.errorlogsDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // EditAction
-            // 
-            this.EditAction.HeaderText = "";
-            this.EditAction.Name = "EditAction";
-            this.EditAction.ReadOnly = true;
-            // 
-            // DeleteAction
-            // 
-            this.DeleteAction.HeaderText = "";
-            this.DeleteAction.Name = "DeleteAction";
-            this.DeleteAction.ReadOnly = true;
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
@@ -207,39 +187,40 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // đổiĐườngDẫnToolStripMenuItem
             // 
             this.đổiĐườngDẫnToolStripMenuItem.Name = "đổiĐườngDẫnToolStripMenuItem";
-            this.đổiĐườngDẫnToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.đổiĐườngDẫnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.đổiĐườngDẫnToolStripMenuItem.Text = "Open File";
             this.đổiĐườngDẫnToolStripMenuItem.Click += new System.EventHandler(this.đổiĐườngDẫnToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save as";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thoátToolStripMenuItem.Text = "Exit";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click_1);
             // 
@@ -409,12 +390,32 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Tìm kiếm: ";
             // 
+            // errorlogsDataGridViewTextBoxColumn
+            // 
+            this.errorlogsDataGridViewTextBoxColumn.DataPropertyName = "ErrorLogs";
+            this.errorlogsDataGridViewTextBoxColumn.HeaderText = "ErrorLogs";
+            this.errorlogsDataGridViewTextBoxColumn.Name = "errorlogsDataGridViewTextBoxColumn";
+            this.errorlogsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.errorlogsDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // EditAction
+            // 
+            this.EditAction.HeaderText = "";
+            this.EditAction.Name = "EditAction";
+            this.EditAction.ReadOnly = true;
+            // 
+            // DeleteAction
+            // 
+            this.DeleteAction.HeaderText = "";
+            this.DeleteAction.Name = "DeleteAction";
+            this.DeleteAction.ReadOnly = true;
+            // 
             // urlDataGridViewTextBoxColumn
             // 
             this.urlDataGridViewTextBoxColumn.DataPropertyName = "Url";
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
             this.urlDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.urlDataGridViewTextBoxColumn.HeaderText = "Url";
+            this.urlDataGridViewTextBoxColumn.HeaderText = "Host";
             this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
             this.urlDataGridViewTextBoxColumn.ReadOnly = true;
             this.urlDataGridViewTextBoxColumn.Width = 200;
@@ -429,6 +430,7 @@
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
