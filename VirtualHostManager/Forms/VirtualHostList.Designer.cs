@@ -1,4 +1,6 @@
-﻿namespace VirtualHostManager.Forms
+﻿using VirtualHostManager.UserControls;
+
+namespace VirtualHostManager.Forms
 {
     partial class VirtualHostList
     {
@@ -33,10 +35,22 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VirtualHostList));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VirtualHostList));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new DataGridViewDoubleBuffered();
+            this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.directoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updateAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.errorlogsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditAction = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteAction = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.virtualHostBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,24 +74,12 @@
             this.btnForward = new System.Windows.Forms.ToolStripButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.errorlogsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditAction = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DeleteAction = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.directoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.contextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updateAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.virtualHostBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualHostBindingSource3)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.toolStripPaging.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.virtualHostBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -137,11 +139,100 @@
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1289, 697);
+            this.dataGridView1.Size = new System.Drawing.Size(1289, 655);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             this.dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView1_RowPostPaint);
+            // 
+            // urlDataGridViewTextBoxColumn
+            // 
+            this.urlDataGridViewTextBoxColumn.DataPropertyName = "Url";
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
+            this.urlDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.urlDataGridViewTextBoxColumn.HeaderText = "Host";
+            this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
+            this.urlDataGridViewTextBoxColumn.ReadOnly = true;
+            this.urlDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // directoryDataGridViewTextBoxColumn
+            // 
+            this.directoryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.directoryDataGridViewTextBoxColumn.DataPropertyName = "Directory";
+            this.directoryDataGridViewTextBoxColumn.HeaderText = "Directory";
+            this.directoryDataGridViewTextBoxColumn.Name = "directoryDataGridViewTextBoxColumn";
+            this.directoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.FalseValue = "false";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.TrueValue = "true";
+            this.statusDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // contextDataGridViewTextBoxColumn
+            // 
+            this.contextDataGridViewTextBoxColumn.DataPropertyName = "Context";
+            this.contextDataGridViewTextBoxColumn.HeaderText = "Context";
+            this.contextDataGridViewTextBoxColumn.Name = "contextDataGridViewTextBoxColumn";
+            this.contextDataGridViewTextBoxColumn.ReadOnly = true;
+            this.contextDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // authorDataGridViewTextBoxColumn
+            // 
+            this.authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
+            this.authorDataGridViewTextBoxColumn.HeaderText = "Author";
+            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
+            this.authorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // createAtDataGridViewTextBoxColumn
+            // 
+            this.createAtDataGridViewTextBoxColumn.DataPropertyName = "CreateAt";
+            this.createAtDataGridViewTextBoxColumn.HeaderText = "CreateAt";
+            this.createAtDataGridViewTextBoxColumn.Name = "createAtDataGridViewTextBoxColumn";
+            this.createAtDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // updateAtDataGridViewTextBoxColumn
+            // 
+            this.updateAtDataGridViewTextBoxColumn.DataPropertyName = "UpdateAt";
+            this.updateAtDataGridViewTextBoxColumn.HeaderText = "UpdateAt";
+            this.updateAtDataGridViewTextBoxColumn.Name = "updateAtDataGridViewTextBoxColumn";
+            this.updateAtDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // errorlogsDataGridViewTextBoxColumn
+            // 
+            this.errorlogsDataGridViewTextBoxColumn.DataPropertyName = "ErrorLogs";
+            this.errorlogsDataGridViewTextBoxColumn.HeaderText = "ErrorLogs";
+            this.errorlogsDataGridViewTextBoxColumn.Name = "errorlogsDataGridViewTextBoxColumn";
+            this.errorlogsDataGridViewTextBoxColumn.ReadOnly = true;
+            this.errorlogsDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // EditAction
+            // 
+            this.EditAction.HeaderText = "";
+            this.EditAction.Name = "EditAction";
+            this.EditAction.ReadOnly = true;
+            // 
+            // DeleteAction
+            // 
+            this.DeleteAction.HeaderText = "";
+            this.DeleteAction.Name = "DeleteAction";
+            this.DeleteAction.ReadOnly = true;
+            // 
+            // virtualHostBindingSource3
+            // 
+            this.virtualHostBindingSource3.DataSource = typeof(VirtualHostManager.Models.VirtualHost);
             // 
             // textBox1
             // 
@@ -192,35 +283,35 @@
             // đổiĐườngDẫnToolStripMenuItem
             // 
             this.đổiĐườngDẫnToolStripMenuItem.Name = "đổiĐườngDẫnToolStripMenuItem";
-            this.đổiĐườngDẫnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.đổiĐườngDẫnToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.đổiĐườngDẫnToolStripMenuItem.Text = "Open File";
             this.đổiĐườngDẫnToolStripMenuItem.Click += new System.EventHandler(this.đổiĐườngDẫnToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.saveAsToolStripMenuItem.Text = "Save as";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.thoátToolStripMenuItem.Text = "Exit";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click_1);
             // 
@@ -390,95 +481,6 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Tìm kiếm: ";
             // 
-            // errorlogsDataGridViewTextBoxColumn
-            // 
-            this.errorlogsDataGridViewTextBoxColumn.DataPropertyName = "ErrorLogs";
-            this.errorlogsDataGridViewTextBoxColumn.HeaderText = "ErrorLogs";
-            this.errorlogsDataGridViewTextBoxColumn.Name = "errorlogsDataGridViewTextBoxColumn";
-            this.errorlogsDataGridViewTextBoxColumn.ReadOnly = true;
-            this.errorlogsDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // EditAction
-            // 
-            this.EditAction.HeaderText = "";
-            this.EditAction.Name = "EditAction";
-            this.EditAction.ReadOnly = true;
-            // 
-            // DeleteAction
-            // 
-            this.DeleteAction.HeaderText = "";
-            this.DeleteAction.Name = "DeleteAction";
-            this.DeleteAction.ReadOnly = true;
-            // 
-            // urlDataGridViewTextBoxColumn
-            // 
-            this.urlDataGridViewTextBoxColumn.DataPropertyName = "Url";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
-            this.urlDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.urlDataGridViewTextBoxColumn.HeaderText = "Host";
-            this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
-            this.urlDataGridViewTextBoxColumn.ReadOnly = true;
-            this.urlDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // directoryDataGridViewTextBoxColumn
-            // 
-            this.directoryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.directoryDataGridViewTextBoxColumn.DataPropertyName = "Directory";
-            this.directoryDataGridViewTextBoxColumn.HeaderText = "Directory";
-            this.directoryDataGridViewTextBoxColumn.Name = "directoryDataGridViewTextBoxColumn";
-            this.directoryDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.FalseValue = "false";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusDataGridViewTextBoxColumn.TrueValue = "true";
-            this.statusDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // contextDataGridViewTextBoxColumn
-            // 
-            this.contextDataGridViewTextBoxColumn.DataPropertyName = "Context";
-            this.contextDataGridViewTextBoxColumn.HeaderText = "Context";
-            this.contextDataGridViewTextBoxColumn.Name = "contextDataGridViewTextBoxColumn";
-            this.contextDataGridViewTextBoxColumn.ReadOnly = true;
-            this.contextDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // authorDataGridViewTextBoxColumn
-            // 
-            this.authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
-            this.authorDataGridViewTextBoxColumn.HeaderText = "Author";
-            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
-            this.authorDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // createAtDataGridViewTextBoxColumn
-            // 
-            this.createAtDataGridViewTextBoxColumn.DataPropertyName = "CreateAt";
-            this.createAtDataGridViewTextBoxColumn.HeaderText = "CreateAt";
-            this.createAtDataGridViewTextBoxColumn.Name = "createAtDataGridViewTextBoxColumn";
-            this.createAtDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updateAtDataGridViewTextBoxColumn
-            // 
-            this.updateAtDataGridViewTextBoxColumn.DataPropertyName = "UpdateAt";
-            this.updateAtDataGridViewTextBoxColumn.HeaderText = "UpdateAt";
-            this.updateAtDataGridViewTextBoxColumn.Name = "updateAtDataGridViewTextBoxColumn";
-            this.updateAtDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // virtualHostBindingSource3
-            // 
-            this.virtualHostBindingSource3.DataSource = typeof(VirtualHostManager.Models.VirtualHost);
-            // 
             // VirtualHostList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,13 +500,13 @@
             this.Load += new System.EventHandler(this.VirtualHostList_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.virtualHostBindingSource3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStripPaging.ResumeLayout(false);
             this.toolStripPaging.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.virtualHostBindingSource3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,7 +525,7 @@
         private System.Windows.Forms.ToolStripMenuItem restartWampToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hostToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private DataGridViewDoubleBuffered dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource virtualHostBindingSource3;
         private System.Windows.Forms.ToolStrip toolStripPaging;

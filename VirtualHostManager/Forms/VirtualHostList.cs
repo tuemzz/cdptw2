@@ -20,7 +20,7 @@ using VirtualHostManager.Service;
 
 namespace VirtualHostManager.Forms
 {
-    public partial class VirtualHostList : Form
+    public partial class VirtualHostList : BaseForm
     {
         private VirtualHostContext context;
         BindingList<VirtualHost> listVirtualHostForm = new BindingList<VirtualHost>();
@@ -28,8 +28,8 @@ namespace VirtualHostManager.Forms
 
         private int CurrentPage = 1;
         int PagesCount = 1;
-        int pageRows = 20;
-        public VirtualHostList()
+        int pageRows = 28;
+        public VirtualHostList() : base()
         {
 
             InitializeComponent();
@@ -370,8 +370,8 @@ namespace VirtualHostManager.Forms
             {
                 var dialog = new VirtualHostManager.Forms.SettingForm();
                 dialog.ShowDialog();
+                setItems();
             }
-            setItems();
         }
 
 
