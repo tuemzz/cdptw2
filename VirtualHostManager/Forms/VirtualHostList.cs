@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -16,7 +17,6 @@ using System.Windows.Forms;
 using VirtualHostManager.Extensions;
 using VirtualHostManager.Models;
 using VirtualHostManager.Service;
-using VirtualHostManager.UserControls;
 
 namespace VirtualHostManager.Forms
 {
@@ -31,6 +31,7 @@ namespace VirtualHostManager.Forms
         int pageRows = 20;
         public VirtualHostList()
         {
+
             InitializeComponent();
             dataStorageService = new DataStorageService();
 
@@ -47,7 +48,7 @@ namespace VirtualHostManager.Forms
 
         private void VirtualHostList_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -87,19 +88,6 @@ namespace VirtualHostManager.Forms
             listVirtualHostForm = new BindingList<VirtualHost>();
             items.ForEach(x =>
             {
-                var newItem = new VirtualHostItem();
-                newItem.Url = x.Url;
-                newItem.Id = (items.IndexOf(x) + 1).ToString();
-                newItem.Directory = x.Directory;
-                newItem.Description = x.Description;
-                newItem.CreateAt = x.CreateAt;
-                newItem.Context = x.Context;
-                newItem.Status = x.Status;
-                newItem.DeleteCallback = () =>
-                {
-                    flowLayoutPanel1.Controls.Remove(newItem);
-                };
-
                 //flowLayoutPanel1.Controls.Add(newItem);
                 listVirtualHostForm.Add(x);
             });
@@ -223,10 +211,10 @@ namespace VirtualHostManager.Forms
                     }
                 }
             }
-    }
+        }
 
 
-    private string getFilePath()
+        private string getFilePath()
         {
             using (var fbd = new OpenFileDialog())
             {
@@ -250,59 +238,12 @@ namespace VirtualHostManager.Forms
             RefreshPagination();
         }
 
-        private void tạoMớiToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            var newItem = new VirtualHostItem();
-            newItem.Id = (flowLayoutPanel1.Controls.Count + 1).ToString();
-            newItem.Context = @"<VirtualHost *:80>
-  ServerName localhost
-  ServerAlias localhost
-  DocumentRoot ""${INSTALL_DIR}/www""
-  < Directory ""${INSTALL_DIR}/www/"" >
-     Options + Indexes + Includes + FollowSymLinks + MultiViews
-    AllowOverride All
-    Require local
-  </ Directory >
-</ VirtualHost > ";
-            /*
-             * Set up callback
-             */
-            newItem.UpdateFormCallback = () =>
-            {
-                var listData = new List<VirtualHost>();
-                foreach (VirtualHostItem c in flowLayoutPanel1.Controls)
-                {
-                    listData.Add(new VirtualHost()
-                    {
-                        Url = c.Url,
-                        Directory = c.Directory,
-                        Description = c.Description,
-                        CreateAt = c.CreateAt,
-                        Context = c.Context,
-                        Status = c.Status,
-                    });
-                }
-                context.data = listData;
-
-            };
-            newItem.DeleteCallback = () =>
-            {
-                flowLayoutPanel1.Controls.Remove(newItem);
-            };
-            flowLayoutPanel1.Controls.Add(newItem);
-        }
-
         private void thoátToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
         private void đổiĐườngDẫnToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            setup();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
         {
             setup();
         }
@@ -334,7 +275,10 @@ namespace VirtualHostManager.Forms
                 RebindGridForPageChange();
                 setItems();
             };
-            dialog.ShowDialog();
+            using (Panel p = this.blurPanel())
+            {
+                dialog.ShowDialog();
+            }
 
         }
 
@@ -367,32 +311,35 @@ namespace VirtualHostManager.Forms
             {
                 DataGridView gridView = sender as DataGridView;
                 var index = Int32.Parse((string)gridView.Rows[e.RowIndex].HeaderCell.Value) - 1;
-                    var model = context.data.ElementAt(index);
-                    var dialog = new VirtualHostManager.Forms.VirtualHostDetail();
-                    dialog.formType = VirtualHostDetailType.Edit;
-                    dialog.Url = model.Url;
-                    dialog.Directory = model.Directory;
-                    dialog.CreateAt = model.CreateAt;
-                    dialog.Description = model.Description;
-                    dialog.Context = model.Context;
-                    dialog.Status = model.Status;
-                    dialog.Author = model.Author;
+                var model = context.data.ElementAt(index);
+                var dialog = new VirtualHostManager.Forms.VirtualHostDetail();
+                dialog.formType = VirtualHostDetailType.Edit;
+                dialog.Url = model.Url;
+                dialog.Directory = model.Directory;
+                dialog.CreateAt = model.CreateAt;
+                dialog.Description = model.Description;
+                dialog.Context = model.Context;
+                dialog.Status = model.Status;
+                dialog.Author = model.Author;
 
-                    dialog.saveCallback = () =>
-                    {
-                        model.Url = dialog.Url;
-                        model.Directory = dialog.Directory;
-                        model.CreateAt = dialog.CreateAt;
-                        model.UpdateAt = DateTime.Now.ToString();
-                        model.Description = dialog.Description;
-                        model.Context = dialog.Context;
-                        model.Status = dialog.Status;
-                        model.Author = dialog.Author;
-                        context.data[index] = model;
+                dialog.saveCallback = () =>
+                {
+                    model.Url = dialog.Url;
+                    model.Directory = dialog.Directory;
+                    model.CreateAt = dialog.CreateAt;
+                    model.UpdateAt = DateTime.Now.ToString();
+                    model.Description = dialog.Description;
+                    model.Context = dialog.Context;
+                    model.Status = dialog.Status;
+                    model.Author = dialog.Author;
+                    context.data[index] = model;
                         //Rebind the Datagridview with the data.
                         RebindGridForPageChange();
-                    };
+                };
+                using (Panel p = this.blurPanel())
+                {
                     dialog.ShowDialog();
+                }
             }
             else if (e.ColumnIndex == dataGridView1.Columns["DeleteAction"].Index && e.RowIndex >= 0)
             {
@@ -410,31 +357,23 @@ namespace VirtualHostManager.Forms
 
         private void hostToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dialog = new VirtualHostManager.Forms.HostForm();
-            dialog.ShowDialog();
+            using (Panel p = this.blurPanel())
+            {
+                var dialog = new VirtualHostManager.Forms.HostForm();
+                dialog.ShowDialog();
+            }
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dialog = new VirtualHostManager.Forms.SettingForm();
-            dialog.ShowDialog();
+            using (Panel p = this.blurPanel())
+            {
+                var dialog = new VirtualHostManager.Forms.SettingForm();
+                dialog.ShowDialog();
+            }
             setItems();
         }
 
-        private void restartXamppToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ServiceController sc = new ServiceController("wampapache64");
-
-            if (sc.Site != null && sc.Status == ServiceControllerStatus.Running)
-            {
-                Task.Run(() =>
-                {
-                    sc.Stop();
-                    sc.WaitForStatus(ServiceControllerStatus.Stopped);
-                    sc.Start();
-                });
-            }
-        }
 
         private void restartWampToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -471,6 +410,31 @@ namespace VirtualHostManager.Forms
                     context.SaveChanges();
                 }
             }
+        }
+        private Panel blurPanel()
+        {
+            // take a screenshot of the form and darken it:
+            Bitmap bmp = new Bitmap(this.ClientRectangle.Width, this.ClientRectangle.Height);
+            using (Graphics G = Graphics.FromImage(bmp))
+            {
+                G.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceOver;
+                G.CopyFromScreen(this.PointToScreen(new Point(0, 0)), new Point(0, 0), this.ClientRectangle.Size);
+                double percent = 0.60;
+                Color darken = Color.FromArgb((int)(255 * percent), Color.Black);
+                using (Brush brsh = new SolidBrush(darken))
+                {
+                    G.FillRectangle(brsh, this.ClientRectangle);
+                }
+            }
+            // put the darkened screenshot into a Panel and bring it to the front:
+            Panel p = new Panel();
+            p.Location = new Point(0, 0);
+            p.Size = this.ClientRectangle.Size;
+            p.BackgroundImage = bmp;
+            this.Controls.Add(p);
+            p.BringToFront();
+
+            return p;
         }
     }
 }

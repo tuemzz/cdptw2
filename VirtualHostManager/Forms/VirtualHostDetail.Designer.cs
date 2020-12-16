@@ -253,6 +253,7 @@ namespace VirtualHostManager.Forms
             this.Controls.Add(this.urlText);
             this.Controls.Add(this.label1);
             this.Name = "VirtualHostDetail";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chi tiết";
             this.Load += new System.EventHandler(this.VirtualHostDetail_Load);
             this.ResumeLayout(false);

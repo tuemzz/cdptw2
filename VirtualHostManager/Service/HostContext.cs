@@ -26,7 +26,7 @@ namespace VirtualHostManager
             data.ForEach(x =>
             {
                 var line = string.Format("{0} {1} {2}", x.IpAddress, x.DomainName, x.Comment == "" ? "" : "#" + x.Comment);
-                if (x.Status)
+                if (!x.Status)
                 {
                     line = "#" + line;
                 }
