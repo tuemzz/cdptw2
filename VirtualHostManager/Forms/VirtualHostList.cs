@@ -46,10 +46,7 @@ namespace VirtualHostManager.Forms
             //setup();   //creating new column
         }
 
-        private void VirtualHostList_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -262,6 +259,7 @@ namespace VirtualHostManager.Forms
             dialog.Status = true;
             dialog.saveCallback = () =>
             {
+                generateBackup();
                 model.Url = dialog.Url;
                 model.Directory = dialog.Directory;
                 model.CreateAt = DateTime.Now.ToString();
@@ -324,6 +322,7 @@ namespace VirtualHostManager.Forms
 
                 dialog.saveCallback = () =>
                 {
+                    generateBackup();
                     model.Url = dialog.Url;
                     model.Directory = dialog.Directory;
                     model.CreateAt = dialog.CreateAt;
@@ -345,6 +344,7 @@ namespace VirtualHostManager.Forms
             {
                 DataGridView gridView = sender as DataGridView;
                 var index = Int32.Parse((string)gridView.Rows[e.RowIndex].HeaderCell.Value) - 1;
+                generateBackup();
                 context.data.RemoveAt(index);
                 RebindGridForPageChange();
             }
@@ -440,6 +440,26 @@ namespace VirtualHostManager.Forms
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void generateBackup()
+        {
+            var fileName = Path.Combine(AppConst.BackupFolder,DateTime.Now.ToString("MMddyyyyhhmmsstt")+".txt");
+
+            if (!Directory.Exists(Path.Combine(Application.UserAppDataPath, AppConst.BackupFolder)))
+            {
+                Directory.CreateDirectory(Path.Combine(Application.UserAppDataPath, AppConst.BackupFolder));
+            }
+            dataStorageService.Save(fileName, context.data);
+        }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (Panel p = this.blurPanel())
+            {
+                var dialog = new VirtualHostManager.Forms.BackupForm();
+                dialog.ShowDialog();
+            }
         }
     }
 }

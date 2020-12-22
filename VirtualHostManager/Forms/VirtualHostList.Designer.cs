@@ -38,7 +38,7 @@ namespace VirtualHostManager.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VirtualHostList));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.dataGridView1 = new DataGridViewDoubleBuffered();
+            this.dataGridView1 = new VirtualHostManager.UserControls.DataGridViewDoubleBuffered();
             this.urlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.directoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,9 +85,10 @@ namespace VirtualHostManager.Forms
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.dataGridView1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 48);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(16, 59);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1292, 658);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1723, 810);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
@@ -131,15 +132,17 @@ namespace VirtualHostManager.Forms
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView1.RowHeadersWidth = 51;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1289, 655);
+            this.dataGridView1.Size = new System.Drawing.Size(1719, 806);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
@@ -151,6 +154,7 @@ namespace VirtualHostManager.Forms
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Transparent;
             this.urlDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.urlDataGridViewTextBoxColumn.HeaderText = "Host";
+            this.urlDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.urlDataGridViewTextBoxColumn.Name = "urlDataGridViewTextBoxColumn";
             this.urlDataGridViewTextBoxColumn.ReadOnly = true;
             this.urlDataGridViewTextBoxColumn.Width = 200;
@@ -160,6 +164,7 @@ namespace VirtualHostManager.Forms
             this.directoryDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.directoryDataGridViewTextBoxColumn.DataPropertyName = "Directory";
             this.directoryDataGridViewTextBoxColumn.HeaderText = "Directory";
+            this.directoryDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.directoryDataGridViewTextBoxColumn.Name = "directoryDataGridViewTextBoxColumn";
             this.directoryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -168,6 +173,7 @@ namespace VirtualHostManager.Forms
             this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -176,6 +182,7 @@ namespace VirtualHostManager.Forms
             this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
             this.statusDataGridViewTextBoxColumn.FalseValue = "false";
             this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
             this.statusDataGridViewTextBoxColumn.ReadOnly = true;
             this.statusDataGridViewTextBoxColumn.TrueValue = "true";
@@ -185,35 +192,44 @@ namespace VirtualHostManager.Forms
             // 
             this.contextDataGridViewTextBoxColumn.DataPropertyName = "Context";
             this.contextDataGridViewTextBoxColumn.HeaderText = "Context";
+            this.contextDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.contextDataGridViewTextBoxColumn.Name = "contextDataGridViewTextBoxColumn";
             this.contextDataGridViewTextBoxColumn.ReadOnly = true;
             this.contextDataGridViewTextBoxColumn.Visible = false;
+            this.contextDataGridViewTextBoxColumn.Width = 125;
             // 
             // authorDataGridViewTextBoxColumn
             // 
             this.authorDataGridViewTextBoxColumn.DataPropertyName = "Author";
             this.authorDataGridViewTextBoxColumn.HeaderText = "Author";
+            this.authorDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
             this.authorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.authorDataGridViewTextBoxColumn.Width = 125;
             // 
             // createAtDataGridViewTextBoxColumn
             // 
             this.createAtDataGridViewTextBoxColumn.DataPropertyName = "CreateAt";
             this.createAtDataGridViewTextBoxColumn.HeaderText = "CreateAt";
+            this.createAtDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.createAtDataGridViewTextBoxColumn.Name = "createAtDataGridViewTextBoxColumn";
             this.createAtDataGridViewTextBoxColumn.ReadOnly = true;
+            this.createAtDataGridViewTextBoxColumn.Width = 125;
             // 
             // updateAtDataGridViewTextBoxColumn
             // 
             this.updateAtDataGridViewTextBoxColumn.DataPropertyName = "UpdateAt";
             this.updateAtDataGridViewTextBoxColumn.HeaderText = "UpdateAt";
+            this.updateAtDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.updateAtDataGridViewTextBoxColumn.Name = "updateAtDataGridViewTextBoxColumn";
             this.updateAtDataGridViewTextBoxColumn.ReadOnly = true;
+            this.updateAtDataGridViewTextBoxColumn.Width = 125;
             // 
             // errorlogsDataGridViewTextBoxColumn
             // 
             this.errorlogsDataGridViewTextBoxColumn.DataPropertyName = "ErrorLogs";
             this.errorlogsDataGridViewTextBoxColumn.HeaderText = "ErrorLogs";
+            this.errorlogsDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.errorlogsDataGridViewTextBoxColumn.Name = "errorlogsDataGridViewTextBoxColumn";
             this.errorlogsDataGridViewTextBoxColumn.ReadOnly = true;
             this.errorlogsDataGridViewTextBoxColumn.Width = 200;
@@ -221,14 +237,18 @@ namespace VirtualHostManager.Forms
             // EditAction
             // 
             this.EditAction.HeaderText = "";
+            this.EditAction.MinimumWidth = 6;
             this.EditAction.Name = "EditAction";
             this.EditAction.ReadOnly = true;
+            this.EditAction.Width = 125;
             // 
             // DeleteAction
             // 
             this.DeleteAction.HeaderText = "";
+            this.DeleteAction.MinimumWidth = 6;
             this.DeleteAction.Name = "DeleteAction";
             this.DeleteAction.ReadOnly = true;
+            this.DeleteAction.Width = 125;
             // 
             // virtualHostBindingSource3
             // 
@@ -239,7 +259,8 @@ namespace VirtualHostManager.Forms
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.textBox1.Depth = 0;
             this.textBox1.Hint = "";
-            this.textBox1.Location = new System.Drawing.Point(1029, 19);
+            this.textBox1.Location = new System.Drawing.Point(1372, 23);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.MaxLength = 32767;
             this.textBox1.MouseState = MaterialSkin.MouseState.HOVER;
             this.textBox1.Name = "textBox1";
@@ -247,7 +268,7 @@ namespace VirtualHostManager.Forms
             this.textBox1.SelectedText = "";
             this.textBox1.SelectionLength = 0;
             this.textBox1.SelectionStart = 0;
-            this.textBox1.Size = new System.Drawing.Size(275, 23);
+            this.textBox1.Size = new System.Drawing.Size(367, 28);
             this.textBox1.TabIndex = 6;
             this.textBox1.TabStop = false;
             this.textBox1.UseSystemPasswordChar = false;
@@ -257,13 +278,14 @@ namespace VirtualHostManager.Forms
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.hostToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1316, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1755, 28);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -276,42 +298,42 @@ namespace VirtualHostManager.Forms
             this.settingsToolStripMenuItem,
             this.thoátToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "File";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // đổiĐườngDẫnToolStripMenuItem
             // 
             this.đổiĐườngDẫnToolStripMenuItem.Name = "đổiĐườngDẫnToolStripMenuItem";
-            this.đổiĐườngDẫnToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.đổiĐườngDẫnToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.đổiĐườngDẫnToolStripMenuItem.Text = "Open File";
             this.đổiĐườngDẫnToolStripMenuItem.Click += new System.EventHandler(this.đổiĐườngDẫnToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.saveAsToolStripMenuItem.Text = "Save as";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(155, 26);
             this.thoátToolStripMenuItem.Text = "Exit";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click_1);
             // 
@@ -321,26 +343,27 @@ namespace VirtualHostManager.Forms
             this.restartWampToolStripMenuItem,
             this.backupToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // restartWampToolStripMenuItem
             // 
             this.restartWampToolStripMenuItem.Name = "restartWampToolStripMenuItem";
-            this.restartWampToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.restartWampToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.restartWampToolStripMenuItem.Text = "Restart wamp";
             this.restartWampToolStripMenuItem.Click += new System.EventHandler(this.restartWampToolStripMenuItem_Click);
             // 
             // backupToolStripMenuItem
             // 
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
             // hostToolStripMenuItem
             // 
             this.hostToolStripMenuItem.Name = "hostToolStripMenuItem";
-            this.hostToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.hostToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
             this.hostToolStripMenuItem.Text = "Host";
             this.hostToolStripMenuItem.Click += new System.EventHandler(this.hostToolStripMenuItem_Click);
             // 
@@ -350,12 +373,12 @@ namespace VirtualHostManager.Forms
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(884, 14);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.Location = new System.Drawing.Point(1179, 17);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
             this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(77, 36);
+            this.materialFlatButton1.Size = new System.Drawing.Size(92, 36);
             this.materialFlatButton1.TabIndex = 10;
             this.materialFlatButton1.Text = "Tạo mới";
             this.materialFlatButton1.UseVisualStyleBackColor = true;
@@ -379,10 +402,10 @@ namespace VirtualHostManager.Forms
             this.toolStripButton4,
             this.toolStripButton5,
             this.btnForward});
-            this.toolStripPaging.Location = new System.Drawing.Point(474, 0);
+            this.toolStripPaging.Location = new System.Drawing.Point(666, 0);
             this.toolStripPaging.Name = "toolStripPaging";
             this.toolStripPaging.ShowItemToolTips = false;
-            this.toolStripPaging.Size = new System.Drawing.Size(340, 44);
+            this.toolStripPaging.Size = new System.Drawing.Size(386, 54);
             this.toolStripPaging.TabIndex = 0;
             this.toolStripPaging.Text = "toolStrip1";
             // 
@@ -392,7 +415,7 @@ namespace VirtualHostManager.Forms
             this.btnBackward.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBackward.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBackward.Name = "btnBackward";
-            this.btnBackward.Size = new System.Drawing.Size(51, 41);
+            this.btnBackward.Size = new System.Drawing.Size(64, 51);
             this.btnBackward.Text = "<<";
             this.btnBackward.Click += new System.EventHandler(this.ToolStripButtonClick);
             // 
@@ -405,7 +428,7 @@ namespace VirtualHostManager.Forms
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Padding = new System.Windows.Forms.Padding(12);
-            this.toolStripButton1.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton1.Size = new System.Drawing.Size(51, 51);
             this.toolStripButton1.Text = "1";
             this.toolStripButton1.Click += new System.EventHandler(this.ToolStripButtonClick);
             // 
@@ -415,7 +438,7 @@ namespace VirtualHostManager.Forms
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Padding = new System.Windows.Forms.Padding(12);
-            this.toolStripButton2.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton2.Size = new System.Drawing.Size(51, 51);
             this.toolStripButton2.Text = "2";
             this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButtonClick);
             // 
@@ -425,7 +448,7 @@ namespace VirtualHostManager.Forms
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Padding = new System.Windows.Forms.Padding(12);
-            this.toolStripButton3.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton3.Size = new System.Drawing.Size(51, 51);
             this.toolStripButton3.Text = "3";
             this.toolStripButton3.Click += new System.EventHandler(this.ToolStripButtonClick);
             // 
@@ -435,7 +458,7 @@ namespace VirtualHostManager.Forms
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Padding = new System.Windows.Forms.Padding(12);
-            this.toolStripButton4.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton4.Size = new System.Drawing.Size(51, 51);
             this.toolStripButton4.Text = "4";
             this.toolStripButton4.Click += new System.EventHandler(this.ToolStripButtonClick);
             // 
@@ -445,7 +468,7 @@ namespace VirtualHostManager.Forms
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
             this.toolStripButton5.Padding = new System.Windows.Forms.Padding(12);
-            this.toolStripButton5.Size = new System.Drawing.Size(47, 41);
+            this.toolStripButton5.Size = new System.Drawing.Size(51, 51);
             this.toolStripButton5.Text = "5";
             this.toolStripButton5.Click += new System.EventHandler(this.ToolStripButtonClick);
             // 
@@ -455,7 +478,7 @@ namespace VirtualHostManager.Forms
             this.btnForward.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnForward.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(51, 41);
+            this.btnForward.Size = new System.Drawing.Size(64, 51);
             this.btnForward.Text = ">>";
             this.btnForward.Click += new System.EventHandler(this.ToolStripButtonClick);
             // 
@@ -464,29 +487,31 @@ namespace VirtualHostManager.Forms
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.toolStripPaging, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(15, 716);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(20, 881);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1289, 44);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1719, 54);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(968, 24);
+            this.label1.Location = new System.Drawing.Point(1291, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 16);
+            this.label1.Size = new System.Drawing.Size(87, 20);
             this.label1.TabIndex = 11;
             this.label1.Text = "Tìm kiếm: ";
             // 
             // VirtualHostList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1316, 761);
+            this.ClientSize = new System.Drawing.Size(1755, 937);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.materialFlatButton1);
@@ -494,10 +519,10 @@ namespace VirtualHostManager.Forms
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "VirtualHostList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh sách";
-            this.Load += new System.EventHandler(this.VirtualHostList_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.virtualHostBindingSource3)).EndInit();

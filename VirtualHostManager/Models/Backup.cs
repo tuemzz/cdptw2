@@ -10,5 +10,7 @@ namespace VirtualHostManager.Models
     {
         public string File { set; get; }
         public string Thaotac { set; get; }
+
+        public DateTime Time { set; get; }
     }
 }
